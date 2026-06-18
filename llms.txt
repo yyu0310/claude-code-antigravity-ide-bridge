@@ -1,0 +1,59 @@
+# claude-code-antigravity-ide-bridge
+
+> Bridge setup for using Claude Sonnet/Opus 4.6 in Antigravity IDE, with bidirectional sync to Claude Code.
+
+## What this repo does
+
+Antigravity IDE (Google's agent-first IDE) supports Claude models for Gemini Pro subscribers at no extra cost. This repo provides:
+
+1. Setup guide to switch Antigravity IDE from Gemini to Claude
+2. Script to bidirectionally sync Claude Code memory ↔ Antigravity IDE Knowledge Items
+3. Script to sync slash commands / skills between Claude Code and Antigravity IDE
+4. Starter GEMINI.md template (Antigravity's equivalent of CLAUDE.md)
+5. Security rules to compensate for Antigravity's lack of OS-level hook blocking
+
+## Key facts
+
+- Antigravity IDE reads GEMINI.md from workspace root as a persistent system prompt
+- Claude Code reads CLAUDE.md — use a symlink to share one file between both IDEs
+- Memory formats are incompatible: CC uses .md files with YAML frontmatter; AG uses folder-based Knowledge Items (KI)
+- memory_sync.py converts between formats; runs on a 5-minute launchd schedule
+- Skills use symlinks — both IDEs read the same source .md file
+- Claude quota in AG (as of 2026-06-18): ~3% of Claude Pro per 5-hour session, 3 sessions/week = ~10% of a Claude Code session per week
+
+## Files
+
+- `README.md` — Full English setup guide
+- `README.zh-TW.md` — Traditional Chinese guide
+- `README.zh-CN.md` — Simplified Chinese guide
+- `scripts/memory_sync.py` — Bidirectional CC ↔ AG memory sync (configure CC_MEMORY_DIR at top)
+- `scripts/skill_sync_setup.py` — Skill symlink setup (configure SKILL_DIR at top)
+- `scripts/com.username.memory-sync.plist.template` — macOS launchd template for auto-sync
+- `templates/GEMINI.md` — Starter system prompt template for Antigravity IDE
+
+## Setup in 3 steps (CC users)
+
+```bash
+# 1. Symlink system prompt
+ln -s /your/workspace/CLAUDE.md /your/workspace/GEMINI.md
+
+# 2. Configure and run memory sync
+# Edit CC_MEMORY_DIR in scripts/memory_sync.py, then:
+python3 scripts/memory_sync.py
+
+# 3. Configure and run skill sync
+# Edit SKILL_DIR in scripts/skill_sync_setup.py, then:
+python3 scripts/skill_sync_setup.py
+```
+
+## Limitations
+
+- Memory sync has up to 5-minute lag (launchd interval)
+- No hook-level security in AG — security rules are AI-enforced soft rules only
+- Claude.ai remote MCPs (mcp__claude_ai_*) are not supported in AG; use gws-* Google Workspace MCPs instead
+- clasp push for .gs files requires manual trigger in AG
+- Claude quota in AG is significantly lower than Claude Code
+
+## Optional: MCP tools
+
+Local stdio MCP servers (e.g. a self-built Lark MCP) work in AG with no credential changes — add command and args to ~/.gemini/config/mcp_config.json, no env section needed if the server delegates auth to an external CLI tool.

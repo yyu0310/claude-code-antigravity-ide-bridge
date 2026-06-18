@@ -210,7 +210,7 @@ MCP server configuration lives separately from the sync covered above. Behavior 
 
 | MCP type | Works in AG? | How |
 |---|---|---|
-| API key-based (e.g. TrueNorth) | Yes | Add the same config and key to `~/.gemini/config/mcp_config.json` |
+| API key-based (e.g. Perplexity Search) | Yes | Add the same config and key to `~/.gemini/config/mcp_config.json` |
 | OAuth-based (Gmail, Calendar, Drive) | Yes, separately | Each IDE needs its own OAuth flow — tokens are stored per application |
 | Claude.ai remote MCPs (`mcp__claude_ai_*`) | No | AG has no claude.ai auth layer; use `gws-*` Google Workspace MCPs instead |
 

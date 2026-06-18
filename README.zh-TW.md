@@ -220,7 +220,7 @@ python3 scripts/skill_sync_setup.py
 
 | MCP 類型 | AG 是否可用 | 做法 |
 |---|---|---|
-| API Key 型（如 TrueNorth） | 是 | 在 `~/.gemini/config/mcp_config.json` 填入相同 key |
+| API Key 型（如 Perplexity Search） | 是 | 在 `~/.gemini/config/mcp_config.json` 填入相同 key |
 | OAuth 型（Gmail、Calendar、Drive） | 是，但需分別設定 | 各 IDE 各走一次 OAuth flow |
 | Claude.ai 雲端 MCP（`mcp__claude_ai_*`） | 否 | AG 不支援 claude.ai 認證層；用 `gws-*` Google Workspace MCP 取代 |
 

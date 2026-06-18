@@ -20,7 +20,7 @@
 
 | 需求 | 說明 |
 |---|---|
-| **Gemini Pro 訂閱** | 取得 AG 內建的 Claude 免費額度 |
+| **Gemini Pro 訂閱** | 取得 AG 內建的 Claude 免費額度；已有 Anthropic API Key 者可跳過 |
 | **Antigravity IDE** | 從 [antigravity.dev](https://antigravity.dev) 下載 |
 | **Python 3.9+** | 僅 memory / skill 同步腳本需要 |
 | **Claude Code** | 選用，只有需要 CC↔AG 同步時才需要 |

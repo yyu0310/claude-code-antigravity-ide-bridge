@@ -1,7 +1,7 @@
 # AGENTS.md
 
 This file provides context for AI assistants working in this repository.
-Equivalent files: `CLAUDE.md` (Claude Code), `GEMINI.md` (Antigravity IDE).
+In this repo, `CLAUDE.md` is a symlink pointing to this file — no content duplication. `GEMINI.md` is the template in `templates/` (not in the repo root).
 
 ---
 
@@ -23,7 +23,8 @@ The bridge covers four things:
 README.md                                    Main guide (English)
 README.zh-TW.md                              Traditional Chinese guide
 README.zh-CN.md                              Simplified Chinese guide
-AGENTS.md                                    This file
+AGENTS.md                                    This file (source of truth)
+CLAUDE.md                                    Symlink → AGENTS.md (read by Claude Code)
 llms.txt                                     LLM-friendly project summary
 LICENSE                                      MIT
 .gitignore

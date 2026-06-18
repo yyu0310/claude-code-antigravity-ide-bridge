@@ -26,6 +26,9 @@ Antigravity IDE (Google's agent-first IDE) supports Claude models for Gemini Pro
 - `README.md` — Full English setup guide
 - `README.zh-TW.md` — Traditional Chinese guide
 - `README.zh-CN.md` — Simplified Chinese guide
+- `AGENTS.md` — AI assistant context file; CLAUDE.md is a symlink pointing here
+- `CLAUDE.md` — Symlink → AGENTS.md (read by Claude Code)
+- `LICENSE` — MIT
 - `scripts/memory_sync.py` — Bidirectional CC ↔ AG memory sync (configure CC_MEMORY_DIR at top)
 - `scripts/skill_sync_setup.py` — Skill symlink setup (configure SKILL_DIR at top)
 - `scripts/com.username.memory-sync.plist.template` — macOS launchd template for auto-sync

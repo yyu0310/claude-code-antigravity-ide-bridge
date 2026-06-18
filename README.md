@@ -20,7 +20,7 @@ Use Claude Sonnet / Opus 4.6 inside [Antigravity IDE](https://antigravity.dev). 
 
 | Requirement | Notes |
 |---|---|
-| **Gemini Pro subscription** | Required for the bundled Claude credits |
+| **Gemini Pro subscription** | For bundled Claude credits; skip if using your own Anthropic API key |
 | **Antigravity IDE** | Download at [antigravity.dev](https://antigravity.dev) |
 | **Python 3.9+** | Only needed for the memory/skill sync scripts |
 | **Claude Code** | Optional — only for the CC↔AG sync sections |

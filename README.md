@@ -241,6 +241,8 @@ Based on real usage (as of 2026-06-18):
 - Antigravity IDE gives you **3 of these sessions per week**
 - That means AG's weekly Claude budget is around **10% of a single Claude Code 5-hour window**
 
+Google AI Pro subscribers also get **1,000 AI Credits per month**. Enable **Settings → Models → Enable Overages** to let AG draw on these when the session quota runs out. The credit-to-token exchange rate is not published, so the effective additional capacity is unclear.
+
 **Who this setup is actually useful for:**
 
 1. **Gemini Pro subscribers who don't pay for Claude Pro** — you get some Claude access at no extra cost, and with this setup it behaves like a proper Claude Code environment (memory, skills, system prompt all carry over)

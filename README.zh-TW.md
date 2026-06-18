@@ -37,6 +37,8 @@ Gemini Pro 內建 Claude 額度，但在使用前請先建立正確預期。
 - Antigravity IDE 每週提供 **3 個** 這樣的 session
 - 換算下來，AG 一週的 Claude 總用量約等於 Claude Code 單一 5 小時視窗的 **10%**
 
+Google AI Pro 訂閱用戶另有每月 **1,000 AI Credits**。開啟 **Settings → Models → Enable Overages** 後，session 配額耗盡時會自動消耗 Credits。Credits 與 Claude token 的換算比例未公開，實際能多用多少不確定。
+
 **這個設定實際上適合誰：**
 
 1. **Gemini Pro 用戶且沒有 Claude Pro 的人** — 零額外費用就能用到 Claude，搭配本指南的設定後，體驗接近完整的 Claude Code 環境（memory、skill、系統提示詞都能帶過去）

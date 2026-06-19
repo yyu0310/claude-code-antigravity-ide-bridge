@@ -142,6 +142,16 @@ launchctl load ~/Library/LaunchAgents/com.YOUR-USERNAME.memory-sync.plist
 
 The default interval is every 5 minutes. Adjust `StartInterval` in the plist to change it.
 
+#### Troubleshooting
+
+**Job loads but nothing happens, or the error log shows `Operation not permitted`:**
+`/usr/bin/python3` is Apple's Command Line Tools Python, which has no Full Disk Access. If you cloned this repo into a protected folder (`~/Desktop`, `~/Documents`, `~/Downloads`), launchd cannot read `memory_sync.py`. Fix it either way:
+- Grant Full Disk Access to that Python in System Settings → Privacy & Security → Full Disk Access, or
+- Replace `/usr/bin/python3` in the plist with your own interpreter — run `which python3` to find it (Homebrew is usually `/opt/homebrew/bin/python3` on Apple Silicon, `/usr/local/bin/python3` on Intel).
+
+**Job never starts, or silently fails to load:**
+A plist is XML. Validate it with `plutil -lint <plist>`. If your absolute path contains `&`, `<`, or `>`, escape them as `&amp;`, `&lt;`, `&gt;` — a single unescaped `&` makes the whole plist fail to parse, and it just never runs.
+
 #### How sync loops are prevented
 
 Every memory synced from CC to AG gets a `claude-memory-` prefix in its KI name. The AG→CC direction only processes KIs without that prefix, so CC memories never get re-synced back.

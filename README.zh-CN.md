@@ -159,6 +159,16 @@ launchctl load ~/Library/LaunchAgents/com.你的名字.memory-sync.plist
 
 预设每 5 分钟同步一次，修改 plist 的 `StartInterval` 可调整。
 
+#### 疑难排解
+
+**job 有载入但没反应，或 error log 出现 `Operation not permitted`：**
+`/usr/bin/python3` 是 Apple Command Line Tools 内建的 Python，没有 Full Disk Access。如果你把这个 repo clone 到受保护的文件夹（`~/Desktop`、`~/Documents`、`~/Downloads`），launchd 就读不到 `memory_sync.py`。两种修法择一：
+- 到「系统设置 → 隐私与安全性 → 完全磁盘访问权限」把那支 Python 加入授权，或
+- 把 plist 里的 `/usr/bin/python3` 换成你自己的解释器，用 `which python3` 查（Apple Silicon 的 Homebrew 通常是 `/opt/homebrew/bin/python3`，Intel 是 `/usr/local/bin/python3`）。
+
+**job 完全不启动，或静默载入失败：**
+plist 是 XML，用 `plutil -lint <plist>` 验证。如果你的绝对路径含有 `&`、`<`、`>`，必须转义成 `&amp;`、`&lt;`、`&gt;`，一个没转义的 `&` 就会让整份 plist 解析失败、静默不跑。
+
 #### 防循环设计
 
 CC 同步过来的 KI 统一加 `claude-memory-` 前缀。AG→CC 方向只处理没有此前缀的 KI，所以 CC 来的 memory 不会被误判为 AG 原生 KI 再同步回去。

@@ -7,6 +7,10 @@
 
     <key>ProgramArguments</key>
     <array>
+        <!-- Apple's /usr/bin/python3 has no Full Disk Access. If this repo lives in
+             ~/Desktop, ~/Documents or ~/Downloads, launchd can't read the script below.
+             Either grant that python Full Disk Access, or run `which python3` and use
+             your own interpreter. Any & < > in the path must be escaped: &amp; &lt; &gt; -->
         <string>/usr/bin/python3</string>
         <string>/ABSOLUTE/PATH/TO/memory_sync.py</string>
     </array>
